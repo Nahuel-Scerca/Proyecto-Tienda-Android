@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#323C70</color>
+    <color name="colorPrimaryDark">#2D3251</color>
+    <color name="colorAccent">#EC4055</color>
+    <color name="colorBt">#8BAE63</color>
+    <color name="colorBt2">#888888</color>
+    <color name="colorBorde">#4353AE</color>
+    <color name="colorRelleno">#444759</color>
+    <color name="colorRellenoItem">#D0DFEC</color>
+    <color name="colorInmueble">#DADFFB</color>
+    <color name="colorLetra">#DADFFB</color>
+    <color name="colorBordeInmueble">#252525</color>
+    <color name="colorBlanco">#F9FBFD</color>
+    <color name="colorInquilinoB">#616161</color>
+    <color name="celeste">#ACD0D5</color>
+    <color name="gris_claro">#EAEAEA</color>
+
 </resources>

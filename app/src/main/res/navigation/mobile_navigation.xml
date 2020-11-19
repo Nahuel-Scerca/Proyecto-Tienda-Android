@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_productos">
 
     <fragment
         android:id="@+id/nav_productos"
@@ -21,5 +21,18 @@
         android:id="@+id/nav_ventas"
         android:name="com.example.proyecto_tienda_android.ui.ventas.VentasFragment"
         android:label="@string/menu_ventas"
-        tools:layout="@layout/fragment_ventas" />
+        tools:layout="@layout/fragment_ventas" >
+        <action
+            android:id="@+id/action_nav_ventas_to_fragment_ventas_detalle"
+            app:destination="@id/fragment_ventas_detalle" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_ventas_detalle"
+        android:name="com.example.proyecto_tienda_android.ui.ventasDetalle.VentasDetalleFragment"
+        android:label="PEDIDO"
+        tools:layout="@layout/fragment_ventas_detalle" >
+        <action
+            android:id="@+id/action_fragment_ventas_detalle_to_nav_ventas"
+            app:destination="@id/nav_ventas" />
+    </fragment>
 </navigation>

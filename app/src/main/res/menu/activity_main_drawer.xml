@@ -19,11 +19,18 @@
 
         <item android:title="Cuenta">
         <menu>
+
+            <item
+                android:id="@+id/nav_cuenta"
+                        android:icon="@drawable/user"
+                android:title="@string/menu_config">
+            </item>
             <item
             android:id="@+id/nav_salir"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_ventas">
+            android:icon="@drawable/logout"
+            android:title="@string/menu_salir">
             </item>
+
         </menu>
         </item>
 
