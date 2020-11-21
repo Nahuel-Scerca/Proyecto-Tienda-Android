@@ -3,19 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_productos">
+    app:startDestination="@+id/nav_pedidos">
 
     <fragment
         android:id="@+id/nav_productos"
         android:name="com.example.proyecto_tienda_android.ui.productos.ProductosFragment"
         android:label="@string/menu_productos"
-        tools:layout="@layout/fragment_productos" />
+        tools:layout="@layout/fragment_productos" >
+        <action
+            android:id="@+id/action_nav_productos_to_productoDetalleFragment"
+            app:destination="@id/productoDetalleFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_pedidos"
         android:name="com.example.proyecto_tienda_android.ui.pedidos.PedidosFragment"
         android:label="@string/menu_pedidos"
-        tools:layout="@layout/fragment_pedidos" />
+        tools:layout="@layout/fragment_pedidos" >
+        <action
+            android:id="@+id/action_nav_pedidos_to_fragment_ventas_detalle"
+            app:destination="@id/fragment_ventas_detalle" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_ventas"
@@ -34,5 +42,17 @@
         <action
             android:id="@+id/action_fragment_ventas_detalle_to_nav_ventas"
             app:destination="@id/nav_ventas" />
+        <action
+            android:id="@+id/action_fragment_ventas_detalle_to_nav_pedidos"
+            app:destination="@id/nav_pedidos" />
+    </fragment>
+    <fragment
+        android:id="@+id/productoDetalleFragment"
+        android:name="com.example.proyecto_tienda_android.ui.productosDetalle.ProductoDetalleFragment"
+        android:label="Producto"
+        tools:layout="@layout/producto_detalle_fragment">
+        <action
+            android:id="@+id/action_productoDetalleFragment_to_nav_productos"
+            app:destination="@id/nav_productos" />
     </fragment>
 </navigation>

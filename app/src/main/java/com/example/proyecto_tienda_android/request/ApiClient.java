@@ -2,14 +2,18 @@ package com.example.proyecto_tienda_android.request;
 
 
 
+import android.telephony.mbms.FileInfo;
+
 import com.example.proyecto_tienda_android.modelo.Pedido;
 import com.example.proyecto_tienda_android.modelo.PedidoProducto;
+import com.example.proyecto_tienda_android.modelo.Producto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -18,9 +22,12 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public class ApiClient {
 
@@ -70,6 +77,26 @@ public class ApiClient {
         @GET("PedidoProductos/{pedidoId}")
         Call<List<PedidoProducto>> obtenerLineasPedido(@Header("Authorization") String autorizacion, @Path("pedidoId") int id );
 
+
+        //Producto
+        @GET("Productos")
+        Call<List<Producto>> obtenerProductos(@Header("Authorization") String autorizacion);
+
+        @GET("Productos/Unico/{id}")
+        Call<Producto> obtenerProductoUnico(@Header("Authorization") String autorizacion, @Path("id") int id );
+
+        @GET("Productos/{buscar}")
+        Call<List<Producto>> obtenerProductosBuscador(@Header("Authorization") String autorizacion, @Path("buscar") String buscar);
+
+        @PUT("Productos")
+        Call<Producto> actualizarProducto(@Header("Authorization") String autorizacion,@Body Producto producto);
+
+        @Multipart
+        @POST("Productos/Foto")
+        Call<FileInfo> postFotoProducto(@Header("Authorization") String autorizacion, @Part MultipartBody.Part imagen);
+
+        @POST("Productos/Post")
+        Call<Producto> postProducto(@Header("Authorization") String autorizacion,@Body Producto producto);
 
     }
 

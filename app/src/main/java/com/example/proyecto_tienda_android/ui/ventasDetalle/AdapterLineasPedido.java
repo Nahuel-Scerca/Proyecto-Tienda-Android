@@ -57,7 +57,7 @@ public class AdapterLineasPedido extends ArrayAdapter<PedidoProducto> {
         descripcion.setText("Talle: "+pedidoProducto.getProducto().getTalle()+"\n"+"Color"+pedidoProducto.getProducto().getColor());
 
         TextView nombreProducto = itemView.findViewById(R.id.tvNombre);
-        nombreProducto.setText(pedidoProducto.getProducto().getDescripcion());
+        nombreProducto.setText(pedidoProducto.getProducto().getNombre());
 
 
         TextView montoTotal = itemView.findViewById(R.id.tvMontoTotal);

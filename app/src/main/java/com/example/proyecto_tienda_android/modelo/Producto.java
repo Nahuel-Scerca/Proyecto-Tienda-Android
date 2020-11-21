@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Producto implements Serializable {
 
     private int id;
+    private String nombre;
     private String descripcion;
     private double precio;
     private int categoria;
@@ -14,8 +15,11 @@ public class Producto implements Serializable {
     private String foto;
     private String categoriaNombre;
 
-    public Producto(int id, String descripcion, double precio, int categoria, int stock, String talle, String color, String foto, String categoriaNombre) {
+
+
+    public Producto(int id, String nombre, String descripcion, double precio, int categoria, int stock, String talle, String color, String foto, String categoriaNombre) {
         this.id = id;
+        this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.categoria = categoria;
@@ -24,6 +28,16 @@ public class Producto implements Serializable {
         this.color = color;
         this.foto = foto;
         this.categoriaNombre = categoriaNombre;
+    }
+    public Producto() {
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getId() {
