@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,7 @@ public class VentasDetalleFragment extends Fragment {
     private ArrayAdapter<PedidoProducto> adapter;
     private Context context;
     private Button btDetalleEnvio,btAdquirir;
+    private Pedido pedidoMutable;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -70,6 +72,9 @@ public class VentasDetalleFragment extends Fragment {
                 vm.adquirirPedido(getArguments());
             }
         });
+
+
+
         vm.getMensajeAdquirido().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -85,6 +90,16 @@ public class VentasDetalleFragment extends Fragment {
             }
         });
 
+        btDetalleEnvio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+
+                bundle.putSerializable("pedido", pedidoMutable);
+                Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.fragment_detalle_envio, bundle);
+            }
+        });
+
         vm.getLineasPedidoProducto().observe(getViewLifecycleOwner(), new Observer<List>() {
             @Override
             public void onChanged(List list) {
@@ -97,6 +112,7 @@ public class VentasDetalleFragment extends Fragment {
         vm.getPedido().observe(getViewLifecycleOwner(), new Observer<Pedido>() {
             @Override
             public void onChanged(Pedido pedido) {
+                pedidoMutable= pedido;
                 tvTitulo.setText("Pedido nª "+pedido.getId());
                 tvMontoTotal.setText("Monto: "+pedido.getPrecioFinal());
             }

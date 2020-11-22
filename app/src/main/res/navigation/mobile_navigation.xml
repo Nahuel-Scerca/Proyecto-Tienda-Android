@@ -6,6 +6,14 @@
     app:startDestination="@+id/nav_pedidos">
 
     <fragment
+        android:id="@+id/nav_salir"
+        android:name="com.example.proyecto_tienda_android.ui.logout.salir"
+        android:label="@string/menu_salir"
+        tools:layout="@layout/salir_fragment" >
+
+    </fragment>
+
+    <fragment
         android:id="@+id/nav_productos"
         android:name="com.example.proyecto_tienda_android.ui.productos.ProductosFragment"
         android:label="@string/menu_productos"
@@ -13,6 +21,16 @@
         <action
             android:id="@+id/action_nav_productos_to_productoDetalleFragment"
             app:destination="@id/productoDetalleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_detalle_envio"
+        android:name="com.example.proyecto_tienda_android.ui.detalleEnvio.DetalleEnvioFragment"
+        android:label="@string/detalle_envio"
+        tools:layout="@layout/fragment_detalle_envio" >
+        <action
+            android:id="@+id/action_fragment_detalle_envio_to_fragment_ventas_detalle"
+            app:destination="@id/fragment_ventas_detalle" />
     </fragment>
 
     <fragment
@@ -45,14 +63,19 @@
         <action
             android:id="@+id/action_fragment_ventas_detalle_to_nav_pedidos"
             app:destination="@id/nav_pedidos" />
+        <action
+            android:id="@+id/action_fragment_ventas_detalle_to_fragment_detalle_envio"
+            app:destination="@id/fragment_detalle_envio"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
-        android:id="@+id/productoDetalleFragment"
-        android:name="com.example.proyecto_tienda_android.ui.productosDetalle.ProductoDetalleFragment"
-        android:label="Producto"
-        tools:layout="@layout/producto_detalle_fragment">
-        <action
-            android:id="@+id/action_productoDetalleFragment_to_nav_productos"
-            app:destination="@id/nav_productos" />
-    </fragment>
+    android:id="@+id/productoDetalleFragment"
+    android:name="com.example.proyecto_tienda_android.ui.productosDetalle.ProductoDetalleFragment"
+    android:label="Producto"
+    tools:layout="@layout/producto_detalle_fragment">
+    <action
+        android:id="@+id/action_productoDetalleFragment_to_nav_productos"
+        app:destination="@id/nav_productos" />
+</fragment>
 </navigation>

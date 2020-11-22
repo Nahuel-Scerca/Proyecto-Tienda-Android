@@ -127,20 +127,7 @@ public class ProductoDetalleFragment extends Fragment {
                 productoPost.setDescripcion(etDescripcion.getText().toString());
                 productoPost.setPrecio(Double.parseDouble(etPrecio.getText().toString()));
                 productoPost.setCategoria(Integer.parseInt(etCategoria.getText().toString()));
-
-                //EN visual tenia un metodo que si int categoria = 1  -> categoria nomobre = Calzado . Lo simule aqui
-                if(productoPost.getCategoria()==1){
-                    productoPost.setCategoriaNombre("Calzado");
-                }
-                if(productoPost.getCategoria()==2){
-                    productoPost.setCategoriaNombre("Remera");
-                }
-                if(productoPost.getCategoria()==3){
-                    productoPost.setCategoriaNombre("Pantalon");
-                }
-                if(productoPost.getCategoria()==4){
-                    productoPost.setCategoriaNombre("Pollera");
-                }
+                //productoPost.setCategoriaNombre("Generica");
                 productoPost.setStock(Integer.parseInt(etStock.getText().toString()));
                 productoPost.setTalle(etTalle.getText().toString());
                 productoPost.setColor(etColor.getText().toString());

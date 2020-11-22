@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -71,6 +72,9 @@ public class ApiClient {
         @PUT("Pedidos/AdquirirPedido/{id}")
         Call<String> adquirirPedido(@Header("Authorization") String autorizacion,@Path("id") int id);
 
+        @PUT("Pedidos/ActualizarEstado")
+        Call<Pedido> actualizarEstado(@Header("Authorization") String autorizacion,@Body Pedido pedido);
+
 
 
         //LineasPedido
@@ -93,7 +97,7 @@ public class ApiClient {
 
         @Multipart
         @POST("Productos/Foto")
-        Call<FileInfo> postFotoProducto(@Header("Authorization") String autorizacion, @Part MultipartBody.Part imagen);
+        Call<ResponseBody> postFotoProducto(@Header("Authorization") String autorizacion, @Part MultipartBody.Part imagen);
 
         @POST("Productos/Post")
         Call<Producto> postProducto(@Header("Authorization") String autorizacion,@Body Producto producto);

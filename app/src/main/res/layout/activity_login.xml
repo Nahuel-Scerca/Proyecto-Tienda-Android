@@ -10,25 +10,24 @@
 
     <ImageView
         android:id="@+id/iv_percha"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="224dp"
+        android:layout_width="82dp"
+        android:layout_height="72dp"
         android:layout_marginTop="16dp"
         android:scaleType="centerInside"
-        android:src="@drawable/percha_vector"
-        android:translationX="-20dp"
+        android:src="@drawable/ic_percha_vector"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/textHeadline" />
 
     <ImageView
         android:id="@+id/iv_vestido"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="116dp"
+        android:layout_width="154dp"
+        android:layout_height="170dp"
         android:layout_marginTop="56dp"
         android:scaleType="centerInside"
         android:src="@drawable/ic_vestido"
-        android:translationX="-20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/gris_claro" />
@@ -74,7 +73,6 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
-
         android:drawableStart="@drawable/ic_baseline_email_24"
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="16dp"

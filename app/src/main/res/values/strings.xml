@@ -16,6 +16,7 @@
     <string name="usuario_login">Usuario</string>
     <string name="contraseña_login">Contraseña</string>
     <string name="entrar_btn">Entrar</string>
+    <string name="detalle_envio">Detalles del Envio</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="register_button">No tienes cuenta aun? <b>Registrate aqui</b></string>

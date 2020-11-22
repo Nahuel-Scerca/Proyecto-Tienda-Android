@@ -24,6 +24,7 @@ import java.util.List;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -100,6 +101,20 @@ public class ProductoDetalleViewModel extends AndroidViewModel {
         final SharedPreferences sh= context.getSharedPreferences("datos",0);
         String token=sh.getString("token","---");
 
+
+        //EN visual tenia un metodo que si int categoria = 1  -> categoria nomobre = Calzado . Lo simule aqui
+      /*  switch (productoPost.getCategoria()){
+            case 1: productoPost.setCategoriaNombre("Calzado");
+                break;
+            case 2: productoPost.setCategoriaNombre("Remera");
+                break;
+            case 3: productoPost.setCategoriaNombre("Pantalon");
+                break;
+            case 4: productoPost.setCategoriaNombre("Pollera");
+                break;
+            default:productoPost.setCategoriaNombre("Generica");
+        }*/
+
         Call<Producto> productoPostCall = ApiClient.getMyApiInterface().postProducto(token,productoPost);
 
         productoPostCall.enqueue(new Callback<Producto>() {
@@ -132,26 +147,26 @@ public class ProductoDetalleViewModel extends AndroidViewModel {
         RequestBody filePart = RequestBody.create(
                 MediaType.parse("multipart/form-data"),
                 archivoFoto);
-        MultipartBody.Part file = MultipartBody.Part.createFormData("file", "producto" + prodPut.getId(), filePart);
+        MultipartBody.Part file = MultipartBody.Part.createFormData("file", "producto" + prodPut.getId()+".jpg", filePart);
 
 
         try {
-            Call<FileInfo> callFoto = ApiClient.getMyApiInterface().postFotoProducto(token, file);
+            Call<ResponseBody> callFoto = ApiClient.getMyApiInterface().postFotoProducto(token, file);
 
-            callFoto.enqueue(new Callback<FileInfo>() {
+            callFoto.enqueue(new Callback<ResponseBody>() {
                 @Override
-                public void onResponse(Call<FileInfo> call, Response<FileInfo> response) {
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     Toast.makeText(context, "Imagen cargada", Toast.LENGTH_LONG).show();
 
                     if(response.isSuccessful()){
                         Log.d("subirProducto","Pude Subir la foto");
-                        prodPut.setFoto(pathfinal);
+                        prodPut.setFoto("http://192.168.0.14:45455/Uploads/"+pathfinal+".jpg");
                         putProducto(prodPut);
                     }
                 }
 
                 @Override
-                public void onFailure(Call<FileInfo> call, Throwable t) {
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
                     Log.d("subirProducto",t.getMessage());
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
                 }
