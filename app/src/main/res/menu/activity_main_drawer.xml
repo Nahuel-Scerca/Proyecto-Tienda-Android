@@ -17,14 +17,19 @@
             android:icon="@drawable/ic_baseline_moneda"
             android:title="@string/menu_ventas" />
 
+        <item
+            android:id="@+id/nav_estadisticas"
+            android:icon="@drawable/ic_baseline_bar_chart_24"
+            android:title="@string/menu_estadisticas" />
+
         <item android:title="Cuenta">
         <menu>
 
-            <!--<item
-                android:id="@+id/nav_cuenta"
+            <item
+                android:id="@+id/nav_perfil"
                         android:icon="@drawable/user"
                 android:title="@string/menu_config">
-            </item>-->
+            </item>
             <item
             android:id="@+id/nav_salir"
             android:icon="@drawable/logout"

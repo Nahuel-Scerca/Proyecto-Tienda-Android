@@ -6,11 +6,24 @@
     app:startDestination="@+id/nav_pedidos">
 
     <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.example.proyecto_tienda_android.ui.perfil.PerfilFragment"
+        android:label="Perfil"
+        tools:layout="@layout/fragment_perfil">
+    </fragment>
+
+    <fragment
         android:id="@+id/nav_salir"
         android:name="com.example.proyecto_tienda_android.ui.logout.salir"
         android:label="@string/menu_salir"
         tools:layout="@layout/salir_fragment" >
+    </fragment>
 
+    <fragment
+        android:id="@+id/nav_estadisticas"
+        android:name="com.example.proyecto_tienda_android.ui.estadisticas.EstadisticasFragment"
+        android:label="@string/menu_estadisticas"
+        tools:layout="@layout/fragment_estadisticas" >
     </fragment>
 
     <fragment

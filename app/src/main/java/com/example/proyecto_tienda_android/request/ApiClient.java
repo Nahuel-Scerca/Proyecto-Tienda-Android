@@ -7,6 +7,8 @@ import android.telephony.mbms.FileInfo;
 import com.example.proyecto_tienda_android.modelo.Pedido;
 import com.example.proyecto_tienda_android.modelo.PedidoProducto;
 import com.example.proyecto_tienda_android.modelo.Producto;
+import com.example.proyecto_tienda_android.modelo.Usuario;
+import com.example.proyecto_tienda_android.modelo.UsuarioVentas;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -16,6 +18,7 @@ import java.util.List;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
@@ -52,14 +55,23 @@ public class ApiClient {
     public interface MyApiInterface {
 
 
-        //Propietarios
+        //Usuarios
         @FormUrlEncoded
         @POST("Usuarios/Login")
         Call<String> obtenerToken(@Field("Usuario") String usuario,@Field("Clave") String clave);
 
+        @GET("Usuarios/CantidadVentas")
+        Call<List<UsuarioVentas>> obtenerVentasUsuarios(@Header("Authorization") String autorizacion);
+
+        @GET("Usuarios")
+        Call<Usuario> obtenerUsuario(@Header("Authorization") String autorizacion);
+
 
 
         //Pedidos
+        @GET("Pedidos/Adquiridos/PorUsuario/{EmailUsuario}")
+        Call<UsuarioVentas> obtenerCountVendidosPorUsuario(@Header("Authorization") String autorizacion, @Path("EmailUsuario") String email);
+
         @GET("Pedidos/Vendidos")
         Call<List<Pedido>> obtenerPedidosVendidos(@Header("Authorization") String autorizacion);
 

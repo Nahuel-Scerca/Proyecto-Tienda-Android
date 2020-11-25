@@ -13,10 +13,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.proyecto_tienda_android.modelo.Pedido;
-import com.example.proyecto_tienda_android.modelo.PedidoProducto;
 import com.example.proyecto_tienda_android.request.ApiClient;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,7 +40,7 @@ public class DetalleEnvioViewModel extends AndroidViewModel {
     public void obtenerPedido(Bundle bundle){
 
         final Pedido pedidoBundle = (Pedido) bundle.getSerializable("pedido");
-        Log.d("asignado",pedidoBundle.getAsingnado()+" ESTE VALOR");
+        Log.d("asignado",pedidoBundle.getAsignado()+" ESTE VALOR");
 
         pedido.setValue(pedidoBundle);
 
@@ -52,7 +49,23 @@ public class DetalleEnvioViewModel extends AndroidViewModel {
     public void actualizarEstado(Pedido pedidoPut, int idEstado){
 
         pedidoPut.setEstado(idEstado);
-        pedidoPut.setAsingnado(1);
+
+        //aca le seteamos el nombre segun el estado
+        switch (idEstado){
+            case 1:{
+                pedidoPut.setEstadoNombre("En Preparacion");
+                break;
+            }
+            case 2:{
+                pedidoPut.setEstadoNombre("En Camino");
+                break;
+            }
+            case 3:{
+                pedidoPut.setEstadoNombre("Entregado");
+                break;
+            }
+            default:pedidoPut.setEstadoNombre("En Preparacion");
+        }
 
         final SharedPreferences sh= context.getSharedPreferences("datos",0);
         String token=sh.getString("token","---");

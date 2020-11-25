@@ -12,6 +12,7 @@
     <string name="menu_ventas">Ventas</string>
     <string name="menu_config">Cuenta</string>
     <string name="menu_salir">Salir</string>
+    <string name="menu_estadisticas">Estadisticas</string>
 
     <string name="usuario_login">Usuario</string>
     <string name="contraseña_login">Contraseña</string>

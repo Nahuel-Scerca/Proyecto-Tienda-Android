@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -12,6 +13,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.proyecto_tienda_android.MainActivity;
+import com.example.proyecto_tienda_android.modelo.Usuario;
 import com.example.proyecto_tienda_android.request.ApiClient;
 
 import retrofit2.Call;
@@ -70,4 +72,38 @@ public class LoginActivityViewModel extends AndroidViewModel {
 
     }
 
-}
+    public void cargarUsuario(){
+        final SharedPreferences sh = context.getSharedPreferences("datos", 0);
+        String token = sh.getString("token", "---");
+
+
+        Call<Usuario> user = ApiClient.getMyApiInterface().obtenerUsuario(token);
+        user.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.isSuccessful()) {
+
+                    SharedPreferences.Editor editor = sh.edit();
+
+                    editor.putInt("id", response.body().getId());
+                    editor.putString("nombre",response.body().getNombre() );
+                    editor.putString("apellido", response.body().getApellido());
+                    editor.putString("email", response.body().getEmail());
+                    //editor.putString("clave",response.body().getClave());
+                    editor.putString("avatar",response.body().getAvatar() );
+                    editor.putInt("rol", response.body().getRol());
+                    editor.putString("rolNombre",response.body().getRolNombre() );
+                    editor.commit();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                    Toast.makeText(context,"No se puedo obtener usuario",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
+    }
+

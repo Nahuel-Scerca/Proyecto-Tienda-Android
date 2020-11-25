@@ -2,7 +2,6 @@ package com.example.proyecto_tienda_android.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 public class Pedido implements Serializable {
 
@@ -17,10 +16,10 @@ public class Pedido implements Serializable {
     public String estadoNombre;
     public int estado;
     public String usuarioACargo;
-    public int asingnado;
+    public int asignado;
 
 
-    public Pedido(int id, Date fecha, Date fechaSalida, Date fechaLlegada, double precioFinal, Cliente cliente, int clienteId, String estadoNombre, int estado, String usuarioACargo, int asingnado) {
+    public Pedido(int id, Date fecha, Date fechaSalida, Date fechaLlegada, double precioFinal, Cliente cliente, int clienteId, String estadoNombre, int estado, String usuarioACargo, int asignado) {
         this.id = id;
         this.fecha = fecha;
         this.fechaSalida = fechaSalida;
@@ -31,7 +30,7 @@ public class Pedido implements Serializable {
         this.estadoNombre = estadoNombre;
         this.estado = estado;
         this.usuarioACargo = usuarioACargo;
-        this.asingnado = asingnado;
+        this.asignado = asignado;
     }
 
     public int getId() {
@@ -115,11 +114,11 @@ public class Pedido implements Serializable {
         this.usuarioACargo = usuarioACargo;
     }
 
-    public int getAsingnado() {
-        return asingnado;
+    public int getAsignado() {
+        return asignado;
     }
 
-    public void setAsingnado(int asingnado) {
-        this.asingnado = asingnado;
+    public void setAsignado(int asignado) {
+        this.asignado = asignado;
     }
 }

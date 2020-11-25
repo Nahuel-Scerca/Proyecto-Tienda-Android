@@ -24,10 +24,10 @@ public class SalirViewModel extends AndroidViewModel {
         editor.putInt("id",-1);
         editor.putString("nombre","--");
         editor.putString("apellido","--");
-        editor.putString("dni","--");
         editor.putString("email","--");
-        editor.putString("clave","--");
-        editor.putString("telefono","--");
+        editor.putString("avatar","--");
+        editor.putString("rol","--");
+        editor.putString("rolNombre","--");
         editor.commit();
 
         String t=sh.getString("token","---");

@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 vm.autenticacion(correo.getText().toString(),contraseña.getText().toString());
+                vm.cargarUsuario();
             }
         });
 
